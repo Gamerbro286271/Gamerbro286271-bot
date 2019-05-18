@@ -19,7 +19,7 @@ client.on('guildMemberAdd', member => {
 	channel.send(`Welcome to the server, ${member}`);
 });
 
-  bot.on('message', message => {
+  client.on('message', message => {
 	if (!message.guild) return;
   
 	if (message.content.startsWith('!ban')) {
