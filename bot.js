@@ -25,7 +25,7 @@ client.on('message', message => {
 	if (message.content.startsWith('!kick')) {
 	  const user = message.mentions.users.first();
 	  if (user) {
-		if(!message.member.roles.find(r => r.name === "STAFF")) return message.channel.send('YOU DO NOT HAVE PERMISSIONS')
+		if(!message.member.roles.find(r => r.name === "Perms")) return message.channel.send('YOU DO NOT HAVE PERMISSIONS')
 		const member = message.guild.member(user);
 		if (member) {
 		  member.kick('Optional reason that will display in the audit logs').then(() => {
@@ -49,7 +49,7 @@ client.on('message', message => {
 	if (message.content.startsWith('!ban')) {
 	  const user = message.mentions.users.first();
 	  if (user) {
-		if(!message.member.roles.find(r => r.name === "Administrator")) return message.channel.send('YOU DO NOT HAVE PERMISSIONS')
+		if(!message.member.roles.find(r => r.name === "Perms")) return message.channel.send('YOU DO NOT HAVE PERMISSIONS')
 		const member = message.guild.member(user);
 		if (member) {
 		  member.ban({
@@ -84,7 +84,7 @@ client.on('message', message=>{
 			message.channel.sendMessage('COMING SOON!')
 			break;
 		case 'clear':
-			if(!message.member.roles.find(r => r.name === "STAFF")) return message.channel.send('YOU DO NOT HAVE PERMISSIONS')
+			if(!message.member.roles.find(r => r.name === "Perms")) return message.channel.send('YOU DO NOT HAVE PERMISSIONS')
 			if(!args[1]) return message.reply('Error please define a certain amount')
 			message.channel.bulkDelete(args[1]);
 			break;
