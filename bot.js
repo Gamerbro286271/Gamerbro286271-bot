@@ -69,5 +69,43 @@ client.on('message', message => {
 	}
   });
 
+client.on('message', message=>{
+
+	let args = message.content.substring(PREFIX.length).split(" ");
+
+	switch(args[0]){
+		case 'ping':
+			message.channel.sendMessage('pong!')
+			break;
+		case 'website':
+			message.channel.sendMessage('COMING SOON!')
+			break;
+		case 'cad':
+			message.channel.sendMessage('COMING SOON!')
+			break;
+		case 'clear':
+			if(!message.member.roles.find(r => r.name === "STAFF")) return message.channel.send('YOU DO NOT HAVE PERMISSIONS')
+			if(!args[1]) return message.reply('Error please define a certain amount')
+			message.channel.bulkDelete(args[1]);
+			break;
+		case 'help':
+			const embed = new Discord.RichEmbed()
+			.setTitle('Informaion')
+			.addField('Player Name', message.author.username)
+			.addField('Help', 'List of Commands')
+			.addField('!help', 'Brings up this text')
+			.addField('!ping', 'Pong!')
+			.addField('!website', 'Brings up our website')
+			.addField('!cad', 'Brings up our cad')
+			.addField('!clear', 'Clears a certain amount of messages')
+			.addField('!kick', 'Kicks user')
+			.addField('!ban', 'Bans a user')
+			.setColor(0x00FF00)
+			.setFooter('Made by Samuel W.')
+			message.channel.sendEmbed(embed);
+			break;
+	}
+})
+
 // THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);
